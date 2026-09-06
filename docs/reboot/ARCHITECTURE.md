@@ -4,14 +4,14 @@ Status: EXPLORING
 
 ## Core Architectural Direction
 
-TYRANT should be designed as a **job-driven autonomous content factory**, not as a collection of rigid, hardcoded pipelines.
-
-The system should decompose content production into reusable jobs and route those jobs to workers based on capability, availability, priority, dependencies, and resource constraints.
+TYRANT should be a **job-driven autonomous content factory**, not a collection of rigid, hardcoded pipelines. The confirmed content types should compose reusable capabilities.
 
 Conceptually:
 
 ```text
-Producer / Content Planner
+Content Objective / Producer
+          ↓
+     Content Type Plan
           ↓
       Job Creation
           ↓
@@ -19,35 +19,33 @@ Producer / Content Planner
           ↓
  Resource-Aware Scheduler
           ↓
- ┌────────┬────────┬────────┐
- Research Creation  Media   Operations
- Workers   Workers  Workers  Workers
- └────────┴────────┴────────┘
+ Research → Script → Visual Plan → Assets → Voice → Edit
           ↓
-      Quality Control
+       Quality Control
           ↓
       Distribution
           ↓
-       Analytics
-          ↓
-       Revenue / Learning
-          ↓
-        Producer
+ Analytics → Revenue → Learning
+          ↺
 ```
 
-## Workers, Not Fixed Pipelines
+## Reusable Capabilities
 
-Example workers include:
-- Producer
+Candidate workers/capabilities include:
+- Producer / Content Planner
 - Content Researcher
 - Scriptwriter
 - Hook/Title Generator
-- Asset Planner
+- Story / Narrative Planner
+- Asset Planner / Visual Director
 - Image Generator
+- Illustration / Stickman Scene Generator
 - B-roll Finder/Generator
+- Gameplay Background Selector
+- Product / Brand Asset Collector
 - Voice Generator
 - Video Generator
-- Editor
+- Editor / Compositor
 - Captioner
 - Audio/Mixing Worker
 - Quality-Control Worker
@@ -55,106 +53,86 @@ Example workers include:
 - Analytics Collector
 - Revenue/Attribution Worker
 
-This list is illustrative, not final. Workers should be added when a reusable capability is needed.
+The exact worker set remains open. A capability should be added when multiple content types can benefit from it.
 
-A single worker type should be able to process many jobs. For example, an Editor is not one process permanently assigned to one video. Multiple editor workers can consume editing jobs concurrently, subject to CPU, GPU, RAM, storage, and encoding capacity.
+## Visual Director
 
-## Dynamic Parallelism
+A major shared abstraction is the **Visual Director**. It should translate narration/script beats into visual requirements and select an appropriate treatment instead of forcing every content type into one visual style.
 
-TYRANT should distinguish between:
+Candidate treatments already identified:
+- reusable Minecraft gameplay as an attention/background layer
+- screenshots and product images for recommendation content
+- generated images/graphics
+- illustrated/stickman animated scenes
+- motion graphics/text overlays
+- AI video only where its quality/cost justifies it
+- real presenter footage for the conditional AI-presenter format
 
-- **Jobs existing in the system**
-- **Jobs waiting in queues**
-- **Jobs actively executing**
-- **Actual hardware concurrency**
+The Visual Director should optimize for attention, clarity, cost, and available assets.
 
-For example, TYRANT may have 100 scripts queued, 20 script jobs actively running, and 2 GPU-heavy video-generation jobs running at the same time.
+## Content-Type Composition
 
-Concurrency should therefore be **resource-aware rather than hardcoded**.
-
-Workers should advertise or expose capabilities and resource requirements. The scheduler can then decide which jobs can run and where.
-
-Example worker metadata:
+Examples:
 
 ```text
-Worker: VideoGenerator-01
-Capabilities: text_to_video, image_to_video
-GPU: A100 80GB
-Concurrency: resource-dependent
-Status: available
+Storytelling
+→ story plan
+→ voice
+→ Minecraft background
+→ attention visuals/captions
+→ edit
+
+Animated Explainer
+→ research
+→ explanation script
+→ illustrated scene plan
+→ stickman scenes
+→ voice
+→ edit
+
+List / Recommendation
+→ research
+→ ranked items
+→ product/brand assets
+→ screenshots/images/demos where useful
+→ comparison visuals
+→ voice
+→ edit
+→ affiliate packaging
 ```
 
-## Compute Abstraction
+The examples are format patterns, not separate software systems.
 
-TYRANT should not be architecturally tied to a specific GPU model.
+## Workers, Not Fixed Pipelines
 
-An A100 is an example of a high-capacity worker host, not an architectural dependency. The same scheduler should be able to use consumer GPUs, cloud GPUs, CPU workers, and API-based model providers where appropriate.
+A worker is a reusable capability. For example, an Editor should process editing jobs from many content types, while a Visual Director chooses which visual treatment a particular job requires.
 
-The system should adapt execution to available resources rather than assuming unlimited compute.
+Workers should advertise capabilities and resource requirements. Multiple workers can execute concurrently subject to CPU, GPU, RAM, storage, API quota, cost, and priority.
 
 ## Queue-Based Execution
 
 Work should flow through queues rather than direct worker-to-worker calls. A completed job emits an event/state transition that makes dependent work eligible.
 
-Example:
-
 ```text
 Research complete
       ↓
-Script job becomes eligible
+Script eligible
       ↓
-Script complete
+Visual plan eligible
       ↓
-Asset jobs become eligible
+Assets eligible
       ↓
-Assets complete
+Edit eligible
       ↓
-Edit job becomes eligible
+QC eligible
       ↓
-QC complete
-      ↓
-Distribution job becomes eligible
+Distribution eligible
 ```
-
-This preserves the benefits of dependency-driven production without turning every content type into a separate hardcoded pipeline.
-
-## Producer Role
-
-The Producer is conceptually different from a worker that performs one media operation. It creates and prioritizes production work.
-
-A Producer may turn a content objective into many candidate jobs, for example:
-
-```text
-Goal: produce 100 social videos
-
-→ research candidates
-→ select opportunities
-→ create 100 content jobs
-→ decompose each into required work
-→ prioritize work
-→ send work into queues
-```
-
-The Producer should optimize for TYRANT's business objective rather than artistic perfection for its own sake.
 
 ## Resource-Aware Scheduling
 
-The scheduler should eventually consider:
-- GPU VRAM
-- GPU utilization
-- CPU availability
-- system RAM
-- storage and I/O
-- model requirements
-- expected execution time
-- queue depth
-- job priority
-- production cost
-- available free/cloud/API credits
-- retry/failure state
-
-This enables TYRANT to increase throughput when more compute becomes available without redesigning the content system.
+The scheduler should eventually consider GPU VRAM/utilization, CPU, RAM, storage/I/O, model requirements, execution time, queue depth, priority, production cost, free/cloud/API credits, and retry state.
 
 ## Status
 
-This architecture is **EXPLORING**. The job/worker/resource model is a strong current direction, but exact queue technology, event implementation, worker runtime, scheduler implementation, and infrastructure choices remain undecided.
+The job/worker/resource model and reusable capability approach are strong current directions. Exact queue technology, event implementation, worker runtime, scheduler implementation, infrastructure, and final capability contracts remain undecided.
