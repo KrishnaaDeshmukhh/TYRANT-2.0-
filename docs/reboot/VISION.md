@@ -1,110 +1,58 @@
 # TYRANT Vision
 
-Status: EXPLORING
+Status: EXPLORING — core direction is clear; final portfolio and economic details remain under evaluation.
 
 ## Core Mentality
 
-TYRANT is being built primarily as a **scale-and-output machine for social media**, not as a system whose success is defined by producing a single "best" video.
+TYRANT is primarily a **scale-and-output machine for social media**, not a system whose success is defined by producing one perfect video.
 
-The primary ambition is to maximize useful output and audience reach:
-
-- more content
-- more clips/videos
-- more impressions
-- more views
-- more opportunities for distribution
-- ultimately more money
-
-A video can be highly cinematic and technically impressive, but that production effort is only valuable if it helps the content perform or monetize. TYRANT should therefore optimize for measurable outcomes such as views, retention, reach, clicks, conversions, and revenue rather than artistic prestige alone.
-
-## Social Media First
-
-TYRANT's initial arena is social media. Content should be designed for environments where a viewer may encounter it while scrolling and make an extremely low-commitment decision to continue watching.
-
-The immediate objective is not to make traditional cinema and wait for an audience to appreciate the production effort. Cinematic storytelling can be used as a production technique inside social content, but the distribution model remains high-volume social media.
-
-## Scale
-
-TYRANT should be capable of producing many pieces of content in parallel. The system should treat content production as a large number of jobs executed by reusable workers rather than as one video being manually completed from beginning to end.
-
-The target mindset is closer to:
+The ambition is:
 
 ```text
-100 ideas
+Ideas
+→ content decisions
 → many scripts
 → many assets
 → many edits
 → many published videos
-→ many impressions
-→ many views
+→ impressions / views
+→ clicks / conversions
 → revenue
+→ reinvestment
 ```
 
-The exact production volume is constrained by available compute, APIs, storage, source availability, and platform limits.
+Production effort is justified when it improves attention, performance, monetization, or useful output. Cinematic quality is a means, not the definition of success.
+
+## Content-Format First
+
+TYRANT is being designed around repeatable **content types/formats**, not fixed niches. A single capability should be reusable across subjects and categories.
+
+Confirmed formats currently include clipping/repurposing, original storytelling, animated explainers, and list/ranking/recommendation content. Explainers remain under exploration, and presenter content is conditional on sufficiently automated editing quality.
+
+## Visual Strategy
+
+TYRANT should not depend on one universal visual treatment. A shared Visual Director can select among reusable gameplay, product/tool assets, generated visuals, stickman/illustration, motion graphics, and real presenter footage based on the content type and production objective.
+
+The objective is not maximum visual complexity. It is the **cheapest visual treatment that delivers the required clarity and retention at acceptable quality**.
+
+## Social Media First
+
+The initial arena is social media, where a viewer can encounter content while scrolling and make an extremely low-commitment decision to continue watching.
+
+## Scale
+
+Production should be decomposed into reusable jobs executed by workers rather than manually completing videos end-to-end. The system should support parallel work subject to available compute, APIs, storage, and platform constraints.
 
 ## Zero-Cost-First Economics
 
-The initial build and operation should aim for **zero or near-zero direct cost wherever realistically possible**.
+The initial operation should aim for zero or near-zero direct cost where realistically possible through open-source software, free API tiers/credits, cloud credits, free GPU allocations, and low-cost infrastructure.
 
-The strategy is to use:
-- free/open-source software
-- free API tiers and credits
-- available cloud credits
-- free GPU allocations where available
-- existing repositories and tools
-- low-cost or no-cost infrastructure where practical
-
-However, zero cost is an **initial economic strategy**, not a permanent restriction.
-
-Once TYRANT generates meaningful revenue, money should be reinvested into infrastructure that removes friction and increases throughput or quality, including paid GPU compute, stronger API/model access, storage, and other necessary services.
-
-The desired progression is:
-
-```text
-Free resources
-      ↓
-Build and operate TYRANT
-      ↓
-Generate content
-      ↓
-Generate views / revenue
-      ↓
-Reinvest revenue
-      ↓
-Paid compute + better APIs + less friction
-      ↓
-Higher throughput
-      ↓
-More content / views / revenue
-```
+Zero-cost is an initial economic strategy, not a permanent restriction. Revenue should eventually be reinvested into compute, stronger models/APIs, storage, and other infrastructure that increases throughput or quality.
 
 ## Measurement Mindset
 
-TYRANT should measure outcomes numerically. Important metrics may include:
-
-- impressions
-- views
-- retention/watch time
-- shares
-- followers/subscribers gained
-- link clicks
-- affiliate conversions
-- revenue
-- production cost
-- compute consumption
-- cost per published asset
-- revenue per unit of compute
-
-This does **not** mean the system should blindly chase whatever happens to win a small sample. Experiments and feedback are useful, but the overarching goal is building a high-throughput, economically viable content machine.
-
-## Cinematic Quality
-
-High production quality remains useful. TYRANT can use cinematic scripting, storytelling, visual generation, editing, sound design, pacing, and presentation when those techniques improve attention and performance.
-
-The principle is:
-
-> Cinematic quality is a means to win attention, not the definition of success.
+Important metrics include views, retention/watch time, shares, subscriber/follower growth, clicks, affiliate conversions, revenue, production cost, compute consumption, cost per published asset, and revenue per unit of compute.
 
 ## Current Status
 
-This vision is **EXPLORING**. The economic mentality and social-media-first objective are now clear, while the exact revenue mix, target scale, content portfolio, and reinvestment thresholds remain to be determined.
+The vision remains EXPLORING. The social-media-first, high-output, economics-driven direction is clear. The final content portfolio, revenue mix, target scale, and reinvestment thresholds will be finalized through the ongoing content-type evaluation.
