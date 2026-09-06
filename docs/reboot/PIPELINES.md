@@ -61,11 +61,60 @@ Visual direction: assemble official logos/brand assets, product screenshots, pro
 
 Core quality principle: selection, comparison, explanation, and recommendation must provide genuine value; avoid generic mass-produced listicles.
 
+### 8. Story / Scene Analysis
+Status: EXPLORING
+
+Analyze or explain a specific story, scene, character, ending, theme, hidden detail, or narrative choice from movies, anime, cartoons, comics, games, or other media.
+
+Examples:
+- Why a particular movie scene works
+- Character psychology
+- Ending or plot explanation
+- Hidden details / symbolism
+- Character or story analysis
+- Why a specific scene became memorable
+
+The main production challenge is visual sourcing. TYRANT should not depend on manual timeline scrubbing. A reusable **semantic footage retrieval** capability is therefore being explored: index an available video library, search it using natural-language visual requirements, retrieve the relevant timestamped scene, and pass the selected clip to the editor.
+
+Important distinction: this does **not** imply unrestricted downloading or use of copyrighted footage. The source/rights policy must be explicit. The retrieval system can operate on user-provided/licensed footage, public-domain/freely licensed sources, and other sources TYRANT is permitted to use. Copyrighted movie/anime footage requires separate rights/fair-use review rather than an assumption that automation makes it permissible.
+
+### 9. Short AI Documentary
+Status: EXPLORING
+
+Create short documentary-style videos, initially targeting roughly **60 seconds**, using AI for research, narrative structure, visual planning, voice, asset retrieval/generation, editing, and QC.
+
+Potential workflow:
+
+```text
+Topic
+→ Research
+→ Story angle
+→ Script
+→ Shot/visual plan
+→ Asset acquisition
+→ Asset semantic indexing/retrieval
+→ Voice
+→ Edit/composite
+→ Captions/SFX/music
+→ QC
+→ Publish
+```
+
+The documentary pipeline should be able to choose between multiple visual sources rather than requiring every shot to come from one place:
+- licensed/user-owned footage
+- free/royalty-free stock footage APIs
+- public-domain/freely licensed media
+- images and archival material
+- generated images/graphics
+- AI-generated video for selected shots when justified
+- reusable visual assets
+
+The important idea is not a single “AI documentary generator” repository. It is a reusable **script → visual requirements → asset retrieval/generation → edit recipe** system that can support multiple content types.
+
 ## Existing Candidates Still To Evaluate
 
 The previous reboot list contains additional candidates that have not yet received a final decision in the current structured evaluation:
 
-- Analysis / Commentary
 - News / Trend / Information Feed
 - Product / Review / Recommendation as a distinct format from general List/Ranking
 - Interactive Choice / Dilemma Content
@@ -73,8 +122,34 @@ The previous reboot list contains additional candidates that have not yet receiv
 - Compilation / Curation
 - AI-original podcasts / simulated conversations (currently lower priority, not a confirmed pipeline)
 
-These remain candidates rather than confirmed scope.
+News/trend content remains a candidate but is not currently preferred because freshness pressure and rapid visual-production requirements may create a poor complexity-to-value ratio for TYRANT.
+
+## Shared Asset Retrieval Direction
+
+A major emerging reusable capability is an **Asset Acquisition + Semantic Retrieval Worker**.
+
+Conceptually:
+
+```text
+Script / Scene Plan
+      ↓
+Visual Requirements
+      ↓
+Search permitted asset sources + existing library
+      ↓
+Download / ingest candidate assets
+      ↓
+Scene detection + metadata + semantic indexing
+      ↓
+Natural-language retrieval
+      ↓
+Rank candidate clips/images
+      ↓
+Return timestamped assets to editor
+```
+
+This capability is more important than any single documentary or movie-analysis pipeline because it attacks the recurring TYRANT bottleneck: **what should be shown for each sentence, and where do we get it?**
 
 ## Architecture Implication
 
-The portfolio should be implemented through reusable capabilities rather than one hardcoded engine per niche. Different content types should share research, scripting, visual planning, asset, voice, editing, QA, publishing, analytics, and monetization capabilities where appropriate.
+The portfolio should be implemented through reusable capabilities rather than one hardcoded engine per niche. Different content types should share research, scripting, visual planning, asset acquisition/retrieval, voice, editing, QA, publishing, analytics, and monetization capabilities where appropriate.
