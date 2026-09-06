@@ -1,132 +1,80 @@
 # TYRANT Content Pipelines
 
-Status: EXPLORING
+Status: ACTIVE — portfolio evaluation is ongoing.
 
-## Current Direction
+## Evaluation Rule
 
-TYRANT is being reconsidered from a single clipping machine into a private autonomous content factory. The unit of selection is not a niche; it is a repeatable content format/mechanism that can be automated and distributed.
+Evaluate one **content type** at a time, not one niche at a time. Each type is judged on viewer experience, business/monetization, production workflow, visuals, automation potential, scaling potential, quality ceiling, and TYRANT fit. Final status is KEEP, EXPLORE, or REJECT.
 
-The current goal is to identify a small number of content types with a strong combination of:
-- attention/retention potential
-- monetization potential
-- automation feasibility
-- visual quality
-- reasonable compute/GPU cost
-- availability of source material/data
-- ability to produce both Shorts and, where useful, long-form source videos that can later be clipped
+## Confirmed Portfolio
 
-## Candidate Content Types
+### 1. Clipping / Repurposed Content
+Status: DECIDED — KEEP
 
-### 1. Extract / Clip Existing Content
-Status: PROPOSED
+Transform long-form content such as podcasts, interviews, streams, and other suitable videos into high-retention short-form clips.
 
-Transform long-form video, streams, interviews, podcasts, etc. into short-form moments.
+Business direction: owned channels plus a possible creator clipping-service mode. Higher-value service can include distribution on TYRANT-owned channels.
 
-Strength: existing concept and relatively mature tooling.
-Risk: copyright/reused-content constraints; source acquisition and rights must be handled deliberately.
+Core quality principle: this is retention-oriented repurposing, not merely transcript cutting.
 
-### 2. Analysis / Commentary
-Status: PROPOSED
+### 2. AI-Original Storytelling
+Status: DECIDED — KEEP
 
-Create an original argument, interpretation, breakdown, or perspective about an existing subject. Character analysis is a particularly interesting example because fandom creates a pre-existing audience around recognizable subjects.
+Create original narrative short-form content such as Minecraft stories, horror/mystery, twists, fiction, psychological stories, and similar formats.
 
-Example pattern:
-Hook -> claim/thesis -> evidence/examples -> interpretation -> payoff.
+Confirmed visual mode: **Mode A only** — reusable Minecraft gameplay as background + voiceover + attention-grabbing visuals/captions. New gameplay should not be recorded for every video.
 
-Visual layer can combine licensed/public-domain material, screenshots, diagrams, generated B-roll, motion graphics, and limited transformative source footage where appropriate.
+### 3. AI-Original Explainer / Educational
+Status: EXPLORING / KEEP
 
-Important design issue: the system should not be forced into bland neutrality. It needs a controlled editorial voice/perspective while remaining factually grounded.
+Create explainers from scratch: facts, concepts, tools, tutorials, phenomena, and educational subjects.
 
-### 3. Explainer / Information Video
-Status: PROPOSED
+Possible visual treatments include reusable gameplay, generated images/graphics, and illustrated/stickman presentation. The exact shared visual-director system remains open.
 
-Research a subject and explain it clearly using narration, visuals, diagrams, screen recordings, generated B-roll, and/or a virtual presenter.
+### 4. AI Avatar / Presenter
+Status: CONDITIONAL / EXPLORING
 
-This overlaps with AI-presenter/avatar content and should probably be treated as a format family rather than an entirely separate engine.
+Presenter-led content where the user can be the real on-camera face. AI can handle research, scripting, visual planning, editing, and production assistance.
 
-### 4. Storytelling / Documentary
-Status: PROPOSED
+Decision condition: the avatar/presenter layer is easy enough; the difficult part is automating high-quality motion graphics and editing. Keep only if that visual editing can reach the required quality without substantial manual work.
 
-Generate a complete narrative from research or a creative premise. A long-form documentary can be the primary asset, then automatically generate Shorts/clips from it.
+### 5. Animated Explainer / Commentary
+Status: DECIDED — KEEP
 
-This is strategically attractive because one research/story asset can feed multiple outputs.
+Explanation/commentary where illustrated animation is the primary visual language.
 
-### 5. List / Ranking / Countdown
-Status: PROPOSED
+Confirmed direction: simple AI-directed stickman/illustrated animation is practical and fits TYRANT better than attempting full 3D animation. The animation itself carries the explanation.
 
-Examples: top 10, rankings, comparisons, lists, tier-style formats.
+### 6. Screen-recorded / Demonstration Content
+Status: DECIDED — REJECT
 
-Strong automation fit because the structure is predictable, but the creative layer must prevent repetitive template output.
+Rejected despite technical automability. Reliable browser/UI operation, changing interfaces, application state, timing, and correction handling create unnecessary complexity relative to the strategic value for TYRANT.
 
-### 6. News / Trend / Information Feed
-Status: PROPOSED
+### 7. List / Ranking / Recommendation Content
+Status: DECIDED — KEEP
 
-Continuously discover new information, verify it, turn it into short-form or presenter-led content, and publish quickly.
+“Top X”, rankings, comparisons, recommendation lists, and buying-guide formats across AI, technology, software, physical products, and other categories.
 
-Potential advantage: high responsiveness. Risk: factual accuracy, freshness, and heavy competition.
+Business direction: strong affiliate-commerce fit because the format naturally leads to product/tool recommendations and purchase intent.
 
-### 7. Virtual Host / AI Presenter
-Status: PROPOSED
+Visual direction: assemble official logos/brand assets, product screenshots, product images, short demonstrations where useful, generated illustrations, simple animation, text cards, and optional reusable Minecraft gameplay. Minecraft is an attention layer/fallback, not mandatory.
 
-A recurring synthetic presenter delivers explainers, commentary, news, product content, or other formats.
+Core quality principle: selection, comparison, explanation, and recommendation must provide genuine value; avoid generic mass-produced listicles.
 
-This is a presentation mechanism that can power multiple content types rather than a standalone topic category.
+## Existing Candidates Still To Evaluate
 
-### 8. AI-Original Story / Synthetic Entertainment
-Status: PROPOSED
+The previous reboot list contains additional candidates that have not yet received a final decision in the current structured evaluation:
 
-Content exists primarily because generative AI enables it: characters, fictional stories, animated scenes, recurring personas, synthetic worlds, etc.
+- Analysis / Commentary
+- News / Trend / Information Feed
+- Product / Review / Recommendation as a distinct format from general List/Ranking
+- Interactive Choice / Dilemma Content
+- Visual / Satisfying / Process Content
+- Compilation / Curation
+- AI-original podcasts / simulated conversations (currently lower priority, not a confirmed pipeline)
 
-DramaClaw is a relevant existing open-source project to evaluate for this area.
-
-### 9. Product / Review / Recommendation Content
-Status: PROPOSED
-
-Content designed around product discovery, demonstration, comparison, recommendation, or purchase intent.
-
-Potentially strong for affiliate revenue because YouTube Shopping supports product tagging across Shorts, VOD and Live, and YouTube explicitly recommends integrating products into compelling stories and demonstrations.
-
-### 10. Interactive Choice / Dilemma Content
-Status: PROPOSED
-
-Viewer-facing choices such as "Would you rather...", moral dilemmas, hypothetical scenarios, rankings, quizzes, and challenges.
-
-Potential strength: participation and comments. Monetization value is not yet established and should not be assumed.
-
-### 11. Visual / Satisfying / Process Content
-Status: PROPOSED
-
-Content where the visual transformation, simulation, process, or spectacle is itself the hook.
-
-Potentially strong for retention but compute cost and originality need evaluation before building.
-
-### 12. Compilation / Curation
-Status: EXPLORING
-
-Aggregate material from multiple sources into a new editorial package.
-
-Requires a deliberate data/source acquisition layer and meaningful original transformation. Simple aggregation is not an acceptable TYRANT strategy.
-
-## Current Priority Hypothesis
-
-The strongest candidates for early investigation are:
-1. Extract/Clip
-2. Analysis/Commentary
-3. Storytelling/Documentary
-4. Virtual Host / AI Presenter
-5. List/Ranking
-6. Product/Recommendation
-
-These are not final pipeline decisions. They are the current research shortlist.
-
-## Explicitly Lower Priority For Now
-
-AI-only podcasts and generic simulated conversations are not currently compelling enough as standalone TYRANT priorities. The question is not whether they can be generated, but whether they can reliably attract views and create meaningful revenue compared with alternatives.
-
-Generic mass-produced AI templates are also not acceptable as a strategy. YouTube's current monetization policy explicitly excludes repetitive or mass-produced "inauthentic" content and says reused material must add significant original commentary, substantive modification, or educational/entertainment value.
+These remain candidates rather than confirmed scope.
 
 ## Architecture Implication
 
-TYRANT should not assume one pipeline per niche. Instead, a content-format engine should be reusable across subjects. Existing repositories and automation systems can be combined selectively rather than rebuilding every subsystem from scratch.
-
-Zie619/n8n-workflows is best treated as an automation/workflow pattern library and orchestration reference, not automatically as TYRANT's core video engine.
+The portfolio should be implemented through reusable capabilities rather than one hardcoded engine per niche. Different content types should share research, scripting, visual planning, asset, voice, editing, QA, publishing, analytics, and monetization capabilities where appropriate.
